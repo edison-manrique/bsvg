@@ -5,6 +5,9 @@
   "author": "Edison Manrique",
   "license": "MIT",
   "type": "module",
+  "workspaces": [
+    "playground"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
