@@ -9,7 +9,7 @@ import {
   encodeAISVG,
   decodeBSVG,
   encodeBSVG,
-  AI_CRISTAL,
+  AI_CYBER_SHIELD,
   AI_GEM,
   AI_ROBOT,
   PRESETS,
@@ -18,7 +18,7 @@ import {
 describe('bsvg & aisvg codecs', () => {
   it('has presets defined', () => {
     expect(PRESETS.length).toBeGreaterThanOrEqual(3);
-    expect(AI_CRISTAL.length).toBeGreaterThan(50);
+    expect(AI_CYBER_SHIELD.length).toBeGreaterThan(50);
     expect(AI_GEM.length).toBeGreaterThan(20);
     expect(AI_ROBOT.length).toBeGreaterThan(50);
   });
@@ -46,8 +46,18 @@ describe('bsvg & aisvg codecs', () => {
     expect(decodedSvg).toContain('</svg>');
   });
 
-  it('decodes AI_CRISTAL with styles & animations and encodes to BSVG', async () => {
-    const svg = decodeAISVG(AI_CRISTAL);
+  it('decodes AI_ROBOT with styles & animations and encodes to BSVG', async () => {
+    const svg = decodeAISVG(AI_ROBOT);
+    expect(svg).toContain('<svg');
+    expect(svg).toContain('<style>');
+    const { finalBytes } = await encodeBSVG(svg, true);
+    const decodedSvg = await decodeBSVG(finalBytes);
+    expect(decodedSvg).toContain('<svg');
+    expect(decodedSvg).toContain('</svg>');
+  });
+
+  it('decodes AI_CYBER_SHIELD with styles & animations and encodes to BSVG', async () => {
+    const svg = decodeAISVG(AI_CYBER_SHIELD);
     expect(svg).toContain('<svg');
     expect(svg).toContain('<style>');
     const { finalBytes } = await encodeBSVG(svg, true);

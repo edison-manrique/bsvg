@@ -2,64 +2,6 @@
  * Presets de ejemplo para pruebas de rendimiento y codecs SVG / AISVG / BSVG.
  */
 
-export const AI_CRISTAL = `V 400 460
-PAL $a:#29b6f6 $b:#0277bd $c:#00264d $d:#fff5b8 $e:#ffd700 $f:#b8860b $g:#fff
-G gSky d $a $b
-G gGold v $d $e
-G gGoldD v $e $f
-RG gBg 50%,50%,60% #0b223d #040d18
-DEF star PG 0,-9 2.2,-2.8 9,-2.8 3.5,1.8 5.5,8.5 0,4.5 -5.5,8.5 -3.5,1.8 -9,-2.8 -2.2,-2.8 | f:@gGold s:$f sw:.8
-DEF spk P M0,-9L2,-2L9,0L2,2L0,9L-2,2L-9,0L-2,-2Z | f:$g
-R 0 0 400 460 | f:@gBg
-C 200 245 165 | f:$a op:.09 an:pulse@3s
-P M105,152L295,152L295,255C295,330,245,375,200,400C155,375,105,330,105,255Z | f:@gGold s:$f sw:3
-P M114,161L286,161L286,253C286,322,240,364,200,388C160,364,114,322,114,253Z | f:$g
-P M121,168L279,168L279,252C279,315,237,355,200,378C163,355,121,315,121,252Z | f:@gSky
-P M121,168L225,168L121,295Z | f:$g op:.16
-U star 160,192 200,185 240,192
-T 203 293 "SC" | f:$c op:.35 fs:90 fw:bold ta:middle
-T 200 290 "SC" | f:$g fs:90 fw:bold ta:middle
-P M75,392Q200,418,325,392L315,428Q200,452,85,428Z | f:$c s:$e sw:2.5
-T 200 422 "SPORTING CRISTAL" | f:$g fs:20 fw:bold ta:middle
-C 200 95 64 | f:$e op:.16 an:pulse@2.5s
-{ | an:bob@2.8s
-  P M145,115L162,65L182,102L218,102L238,65L255,115Z | f:@gGoldD s:$f sw:1.5
-  P M132,120L120,62L162,92L200,45L238,92L280,62L268,120Q200,132,132,120Z | f:@gGold s:$f sw:2.5 lc:round
-  P M132,118Q200,130,268,118L265,132Q200,143,135,132Z | f:@gGoldD s:$f sw:2
-  { | f:@gGold s:$f sw:1.5
-    C 120 58 6
-    C 162 62 5
-    C 200 40 8
-    C 238 62 5
-    C 280 58 6
-  }
-  E 200 100 8 11 | f:@gSky s:$d sw:1.8
-  { | s:$d sw:1.2
-    C 155 112 5 | f:$a
-    C 245 112 5 | f:$a
-    C 200 127 5 | f:$g
-  }
-  { | an:blink@1.6s
-    U spk 200,38
-  }
-  { | an:blink@1.8s+0.5s
-    U spk 120,56 | f:$d
-  }
-  { | an:blink@1.8s+1s
-    U spk 280,56 | f:$d
-  }
-  { | an:pulse@1.5s
-    U spk 200,98
-  }
-}`;
-
-export const AI_GEM = `V 128 128
-G g d #38bdf8 #6366f1
-R 0 0 128 128 22 | f:#0f172a
-PG 64,14 108,48 64,114 20,48 | f:@g s:#e0f2fe sw:2
-PG 64,14 84,48 64,114 44,48 | f:#fff op:.22
-L 20 48 108 48 | s:#e0f2fe sw:1.5 op:.6`;
-
 export const AI_ROBOT = `V 240 240
 PAL $bg:#0b0f19 $body:#1e293b $neon:#38bdf8 $core:#10b981 $accent:#f43f5e $metal:#94a3b8 $white:#ffffff
 RG bgGrad 50%,50%,50% #16243b #080c14
@@ -91,6 +33,48 @@ R 0 0 240 240 28 | f:@bgGrad
   }
 }`;
 
+export const AI_CYBER_SHIELD = `V 400 440
+PAL $a:#38bdf8 $b:#6366f1 $c:#a855f7 $d:#f43f5e $e:#10b981 $white:#ffffff $dark:#030712
+G gCyber d $a $b
+G gAccent v $c $d
+RG gGlow 50%,50%,55% #1e1b4b #030712
+DEF ring C 0 0 12 | f:none s:$a sw:1.5 an:pulse@2s
+R 0 0 400 440 24 | f:@gGlow
+C 200 220 140 | f:$b op:.12 an:pulse@3.2s
+{ | an:float@3.5s
+  P M120,130L280,130L280,240C280,315,235,360,200,380C165,360,120,315,120,240Z | f:@gCyber s:$white sw:2.5
+  P M132,142L268,142L268,236C268,302,228,342,200,360C172,342,132,302,132,236Z | f:$dark op:.85 s:$a sw:1.5
+  { | an:pulse@2.4s
+    C 200 230 45 | f:@gAccent op:.8
+    C 200 230 22 | f:$white op:.9
+  }
+  P M160,180L200,150L240,180L200,210Z | f:$white op:.25
+  T 200 315 "CYBER CORE" | f:$a fs:16 fw:bold ta:middle
+  { | an:spin@8s
+    U ring 200,230
+  }
+}`;
+
+export const AI_GEM = `V 128 128
+G g d #38bdf8 #6366f1
+R 0 0 128 128 22 | f:#0f172a
+PG 64,14 108,48 64,114 20,48 | f:@g s:#e0f2fe sw:2
+PG 64,14 84,48 64,114 44,48 | f:#fff op:.22
+L 20 48 108 48 | s:#e0f2fe sw:1.5 op:.6`;
+
+export const AI_PROMPT_SPEC = `Genera gráficos estáticos, sprites animados o historias completas en formato AISVG v4 (sin XML, reutilizable y compacto):
+- Cabecera: V ancho alto | Historia opcional: STORY 18s (o 18s! sin bucle) | Paleta: PAL $a:#ff8fab $b:#ff4d6d
+- Gradientes: G id v|h|d col1 col2(@55%)(*op) | RG id cx%,cy%,r% col1 col2 (usa @id en f:)
+- Reutilización (reduce tokens): DEF id forma | attrs (o DEF id { ... }) -> U id x1,y1 x2,y2 (o U id | attrs)
+- Formas: R x y w h [rx] | C cx cy r | E cx cy rx ry | L x1 y1 x2 y2 | PG pts | P path_sin_espacios | T x y "txt"
+- Grupos (heredan f:, s:, sw:, op:): { | attrs ... }
+- Atributos tras "|": f:fill, s:stroke, sw:width, op:opacity, lc:round, fs:size, fw:bold, ta:middle, tf:rot(deg,cx,cy)|tr(x,y)|sc(x)
+- En P con s: sin f:, el relleno es transparente automáticamente.
+- Animaciones an: (16 macros): float, blink, swayL, swayR, wag, pulse, rise, spin, bob, wave, driftR, driftL, shake, flap, pop, fadeIn
+  Modificadores opcionales: @dur +delay !una_vez (ej: an:pop+2s! o an:bob@3s)
+- Actos/Escenas: tl:inicio-fin (ej: { | tl:0-6 ... } { | tl:6-12 ... }) dentro de STORY.
+Responde SOLO con el código AISVG v4 dentro de un bloque de código \`\`\`txt ... \`\`\`.`;
+
 export interface PresetItem {
   readonly id: string;
   readonly name: string;
@@ -100,10 +84,16 @@ export interface PresetItem {
 
 export const PRESETS: readonly PresetItem[] = [
   {
-    id: 'cristal',
-    name: 'Escudo Sporting Cristal (Animado)',
+    id: 'robot',
+    name: 'Cyber Bot Neo (Animado)',
     category: 'animated',
-    aisvg: AI_CRISTAL,
+    aisvg: AI_ROBOT,
+  },
+  {
+    id: 'shield',
+    name: 'Cyber Shield Neo (Animado)',
+    category: 'animated',
+    aisvg: AI_CYBER_SHIELD,
   },
   {
     id: 'gem',
@@ -111,11 +101,4 @@ export const PRESETS: readonly PresetItem[] = [
     category: 'static',
     aisvg: AI_GEM,
   },
-  {
-    id: 'robot',
-    name: 'Cyber Bot Neo (Animado)',
-    category: 'animated',
-    aisvg: AI_ROBOT,
-  },
 ];
-

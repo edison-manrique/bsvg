@@ -40,11 +40,12 @@ export {
   parseSvgDom,
 } from './utils';
 
-// Presets
+// Presets & AI Prompt
 export {
-  AI_CRISTAL,
-  AI_GEM,
   AI_ROBOT,
+  AI_CYBER_SHIELD,
+  AI_GEM,
+  AI_PROMPT_SPEC,
   PRESETS,
   type PresetItem,
 } from './presets';

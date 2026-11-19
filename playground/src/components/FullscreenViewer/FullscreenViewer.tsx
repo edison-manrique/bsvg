@@ -10,7 +10,6 @@ interface FullscreenViewerProps {
 export const FullscreenViewer: Component<FullscreenViewerProps> = (props) => {
   const [zoom, setZoom] = createSignal(1);
   const [bgMode, setBgMode] = createSignal<'checker' | 'dark' | 'light'>('checker');
-  const [showBorder, setShowBorder] = createSignal(true);
   const [isPaused, setIsPaused] = createSignal(false);
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -93,14 +92,6 @@ export const FullscreenViewer: Component<FullscreenViewerProps> = (props) => {
           <span style={{ color: 'var(--border)', margin: '0 4px' }}>|</span>
 
           <button
-            class={`${styles.ctrlBtn} ${showBorder() ? styles.active : ''}`}
-            onClick={() => setShowBorder(!showBorder())}
-            title="Conmutar marco delimitador"
-          >
-            📐 Bounding Box
-          </button>
-
-          <button
             class={`${styles.ctrlBtn} ${isPaused() ? styles.active : ''}`}
             onClick={() => setIsPaused(!isPaused())}
             title="Pausar o reanudar animaciones CSS"
@@ -120,7 +111,7 @@ export const FullscreenViewer: Component<FullscreenViewerProps> = (props) => {
 
       <div class={`${styles.stageArea} ${getBgClass()}`}>
         <div
-          class={`${styles.canvasBox} ${showBorder() ? styles.showBorders : ''}`}
+          class={styles.canvasBox}
           style={{
             transform: `scale(${zoom()})`,
             'animation-play-state': isPaused() ? 'paused' : 'running',

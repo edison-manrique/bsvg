@@ -47,3 +47,4 @@ execSync('git push -f origin gh-pages', opts);
 
 fs.rmSync(tempDir, { recursive: true, force: true });
 console.log('Playground deployed successfully to gh-pages!');
+

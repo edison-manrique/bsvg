@@ -1,5 +1,5 @@
-import { Component, For } from 'solid-js';
-import { PRESETS, PresetItem } from 'bsvg';
+import { Component, createSignal, For } from 'solid-js';
+import { PRESETS, PresetItem, AI_PROMPT_SPEC } from 'bsvg';
 import styles from './Header.module.css';
 
 interface HeaderProps {
@@ -11,6 +11,14 @@ interface HeaderProps {
 }
 
 export const Header: Component<HeaderProps> = (props) => {
+  const [promptCopied, setPromptCopied] = createSignal(false);
+
+  const handleCopyPrompt = async () => {
+    await navigator.clipboard.writeText(AI_PROMPT_SPEC);
+    setPromptCopied(true);
+    setTimeout(() => setPromptCopied(false), 2000);
+  };
+
   return (
     <header class={styles.header}>
       <div class={styles.brand}>
@@ -22,6 +30,14 @@ export const Header: Component<HeaderProps> = (props) => {
       </div>
 
       <div class={styles.toolbar}>
+        <button
+          class={styles.aiPromptBtn}
+          onClick={handleCopyPrompt}
+          title="Copiar prompt con reglas de AISVG para pegarlo a cualquier IA (ChatGPT, Claude, Gemini, DeepSeek) y pedirle que dibuje SVGs"
+        >
+          {promptCopied() ? '✅ ¡Prompt Copiado!' : '🤖 Copiar Prompt IA'}
+        </button>
+
         <select
           class={styles.select}
           value={props.selectedPreset}

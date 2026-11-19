@@ -16,7 +16,7 @@ import { BsvgPanel } from './components/Panels/BsvgPanel';
 import { FullscreenViewer } from './components/FullscreenViewer/FullscreenViewer';
 
 export const App: Component = () => {
-  const [selectedPreset, setSelectedPreset] = createSignal<string>('cristal');
+  const [selectedPreset, setSelectedPreset] = createSignal<string>('robot');
   const [gameMode, setGameMode] = createSignal<boolean>(true);
 
   // Content states
@@ -120,7 +120,7 @@ export const App: Component = () => {
   };
 
   onMount(() => {
-    const defaultPreset = PRESETS.find((p) => p.id === 'cristal') ?? PRESETS[0]!;
+    const defaultPreset = PRESETS.find((p) => p.id === 'robot') ?? PRESETS[0]!;
     loadPreset(defaultPreset);
   });
 

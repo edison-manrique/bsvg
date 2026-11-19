@@ -1,6 +1,7 @@
-import { Component } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 import styles from './AisvgPanel.module.css';
 import { downloadFile } from '../../utils/download';
+import { AI_PROMPT_SPEC } from 'bsvg';
 
 interface AisvgPanelProps {
   aisvgContent: string;
@@ -11,8 +12,16 @@ interface AisvgPanelProps {
 }
 
 export const AisvgPanel: Component<AisvgPanelProps> = (props) => {
+  const [promptCopied, setPromptCopied] = createSignal(false);
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(props.aisvgContent);
+  };
+
+  const copyPrompt = async () => {
+    await navigator.clipboard.writeText(AI_PROMPT_SPEC);
+    setPromptCopied(true);
+    setTimeout(() => setPromptCopied(false), 2000);
   };
 
   const downloadAisvg = () => {
@@ -27,6 +36,14 @@ export const AisvgPanel: Component<AisvgPanelProps> = (props) => {
           <span class={styles.badge}>Tokens Minimal</span>
         </div>
         <div class={styles.actions}>
+          <button
+            class={styles.iconBtn}
+            onClick={copyPrompt}
+            title="Copiar prompt con reglas del formato AISVG para cualquier IA"
+            style={{ color: 'var(--purple)', 'font-weight': '700' }}
+          >
+            {promptCopied() ? '✓ Copiado' : '🤖 Prompt IA'}
+          </button>
           <button
             class={styles.iconBtn}
             onClick={copyToClipboard}
