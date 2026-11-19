@@ -1,0 +1,139 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(5, 8, 17, 0.94);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.viewerTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.controlsGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ctrlBtn {
+  background: var(--panel-light);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ctrlBtn:hover {
+  border-color: var(--cyan);
+  background: var(--panel-hover);
+}
+
+.ctrlBtn.active {
+  border-color: var(--cyan);
+  background: var(--cyan-glow);
+  color: var(--cyan);
+}
+
+.closeBtn {
+  background: rgba(251, 113, 133, 0.15);
+  color: var(--red);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: var(--red);
+  color: #fff;
+}
+
+.stageArea {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  user-select: none;
+}
+
+.stageArea.bgChecker {
+  background-color: #0b1120;
+  background-image: 
+    linear-gradient(45deg, #162033 25%, transparent 25%),
+    linear-gradient(-45deg, #162033 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #162033 75%),
+    linear-gradient(-45deg, transparent 75%, #162033 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+}
+
+.stageArea.bgDark {
+  background: #03060c;
+}
+
+.stageArea.bgLight {
+  background: #f8fafc;
+}
+
+.canvasBox {
+  width: min(80vw, 75vh);
+  height: min(80vw, 75vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.05s ease-out;
+}
+
+.canvasBox.showBorders {
+  outline: 1.5px dashed rgba(56, 189, 248, 0.6);
+  outline-offset: 4px;
+}
+
+.canvasBox svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.footBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+

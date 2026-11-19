@@ -1,0 +1,30 @@
+.appContainer {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.panelsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  min-height: 0;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .appContainer {
+    height: auto;
+    overflow-y: auto;
+  }
+  .panelsGrid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+

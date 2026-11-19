@@ -1,0 +1,58 @@
+{
+  "name": "bsvg",
+  "version": "1.0.0",
+  "description": "Ultra-compact SVG compression & encoding suite: Binary SVG (BSV4) and AI-friendly minimal DSL (AISVG) with CSS animations and zero-overhead pipelines.",
+  "author": "Edison Manrique",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "bun -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "build:bundle": "esbuild src/index.ts --outfile=dist/index.js --format=esm --platform=neutral --external:linkedom --bundle --minify",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "bun run clean && bun run build:bundle && bun run build:types",
+    "playground:dev": "bun run --cwd playground dev",
+    "playground:build": "bun run --cwd playground build",
+    "deploy:pages": "node deploy_pages.cjs",
+    "build:all": "bun run build && bun run playground:build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/edison-manrique/bsvg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edison-manrique/bsvg/issues"
+  },
+  "homepage": "https://github.com/edison-manrique/bsvg#readme",
+  "keywords": [
+    "svg",
+    "vector-graphics",
+    "compression",
+    "binary-svg",
+    "aisvg",
+    "animation",
+    "deflate",
+    "dsl",
+    "optimization"
+  ],
+  "devDependencies": {
+    "@xmldom/xmldom": "^0.9.12",
+    "esbuild": "^0.25.0",
+    "linkedom": "^0.18.15",
+    "typescript": "^7.0.2"
+  }
+}
